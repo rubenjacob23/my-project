@@ -1,9 +1,6 @@
 pipeline { 
     agent any
     environment{
-        def dockerHome = tool 'myDocker'
-        def dockerPath = dockerHome + "/bin" 
-        env.PATH = "${dockerPath}:${env.PATH}"
         imageName = "rubenjacob23/react-app"
         registryCredential = 'rubenjacob23-dockerhub'
     }
@@ -18,6 +15,13 @@ pipeline {
             steps {
                 echo "testing stage"
                 sh "npm test"
+            }
+        }
+        stage('Initialize Docker'){
+            steps{
+                def dockerHome = tool 'myDocker'
+                env.PATH = "${dockerHome}/bin:${env.PATH}"
+        
             }
         }
         stage('Building Image') {
