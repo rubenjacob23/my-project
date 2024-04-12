@@ -5,12 +5,13 @@ pipeline {
         registryCredential = 'rubenjacob23-dockerhub'
         }
     stages {
-        stage('Install') { 
+            stage('Install') { 
             steps {
                 echo "building states"
                 sh 'node -v' 
                 sh 'npm install' 
-        }
+                }
+            }    
         stage('Test') { 
             steps {
                 echo "testing stage"
@@ -49,5 +50,5 @@ pipeline {
           }
           
      }
-    }
 }
+
