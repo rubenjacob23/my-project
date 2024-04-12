@@ -2,7 +2,7 @@ pipeline {
      
     agent any
     stages {
-        stage('Build') { 
+        stage('Install') { 
             steps {
                 echo "building states"
                 sh 'node -v' 
@@ -17,20 +17,12 @@ pipeline {
             }
         }
          
-         stage('Deploy') { 
-            steps {
-                echo "Deploying..."
-               
-            }
-        }
+         
     }
      post{
           always{
                echo "pipeline concluded."
           }
-          success{
-               echo "all stages executed with success."
-               sh 'npm start'
-          }
+          
      }
 }
