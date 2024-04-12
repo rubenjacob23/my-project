@@ -1,9 +1,9 @@
 pipeline { 
     agent any
-    environment{
+        environment{
         imageName = "rubenjacob23/react-app"
         registryCredential = 'rubenjacob23-dockerhub'
-    }
+        }
     stages {
         stage('Install') { 
             steps {
@@ -49,4 +49,5 @@ pipeline {
           }
           
      }
+    }
 }
