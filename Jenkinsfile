@@ -1,6 +1,10 @@
-pipeline {
-     
+pipeline { 
     agent any
+    environment{
+        imageName = "rubenjacob23/reactapp"
+        registrycredential = 
+        dockerImage = " "
+    }
     stages {
         stage('Install') { 
             steps {
@@ -10,13 +14,17 @@ pipeline {
                 
             }
         }
-         stage('Test') { 
+        stage('Test') { 
             steps {
                 echo "testing stage"
                 sh "npm test"
             }
         }
-         
+        stage('Build'){
+            steps {
+                sh 'npm run build'
+            }
+        } 
          
     }
      post{
