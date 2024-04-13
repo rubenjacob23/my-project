@@ -1,8 +1,10 @@
 pipeline { 
     agent any
+        tools {Docker "myDocker"}
         environment{
-        imageName = "rubenjacob23/react-app"
-        registryCredential = 'rubenjacob23-dockerhub'
+            imageName = "rubenjacob23/react-app"
+            registryCredential = 'rubenjacob23-dockerhub'
+            dockerImage = ''
         }
     stages {
             stage('Install') { 
@@ -22,7 +24,7 @@ pipeline {
         stage('Building Image') {
             steps {
                 script{
-                 dockerImage = docker.build('imageName','.')   
+                 dockerImage = docker.build imageName    
                 }                
             }
         }
