@@ -1,6 +1,5 @@
 pipeline { 
     agent any
-        tools {Docker "myDocker"}
         environment{
             imageName = "rubenjacob23/react-app"
             registryCredential = 'rubenjacob23-dockerhub'
