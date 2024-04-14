@@ -2,8 +2,7 @@ pipeline {
     agent any
         environment{
             imageName = "rubenjacob23/react-app"
-            registryCredential = 'rubenjacob23-dockerhub'
-            dockerImage = ''
+           DOCKERHUB_CREDENTIALS = credentials('docker-creds')
         }
     stages {
             stage('Install') { 
@@ -19,7 +18,6 @@ pipeline {
                 sh "npm test"
             }
         }
-        
         stage('Building Image') {
             steps {
                 script{
@@ -27,20 +25,16 @@ pipeline {
                 }                
             }
         }
-        stage('Deploy Image') {
+        stage('Login') {
             steps {
-                script{
-                    docker.withRegistry("https://registry.hub.docker.com",'rubenjacob23-dockerhub'){
-                    dockerImage.push("$env.BUILD_NUMBER")    
-                    }
-                }
+            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-         
-         
+        
     }
      post{
           always{
+                sh 'docker logout'
                echo "pipeline concluded."
           }
           
