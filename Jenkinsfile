@@ -8,7 +8,8 @@ pipeline {
             stage('Install') { 
             steps {
                 echo "building states"
-                sh 'node -v' 
+                sh 'node -v'
+                sh 'npm cache clean --force' 
                 sh 'npm install' 
                 }
             }    
