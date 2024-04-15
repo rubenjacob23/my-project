@@ -41,16 +41,12 @@ jobs:
   deploy: 
     needs: build
     runs-on: aws-ec2    
-    steps:
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+    steps:      
       - name: Pull image from docker hub
-        run: docker pull integrationninjas/reactjs-app:latest 
+        run: docker pull rubenjacob23/react-app:latest 
       - name: Delete Old Container
         run: docker rm -f reactContainer
       - name: Run docker container
-        run: docker run -d -p 3000:3000 --name reactContainer integrationninjas/reactjs-app 
+        run: docker run -d -p 3000:3000 --name reactContainer rubenjacob23/react-app
 
 
