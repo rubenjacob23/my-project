@@ -44,12 +44,12 @@ jobs:
     steps:      
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
+      - name: Delete Old Container
+        run: docker rm -f reactContainer
       - name: Remove existing Docker image on ec2
         run: docker rmi -f rubenjacob23/react-app:latest || true
       - name: Pull image from docker hub
-        run: docker pull rubenjacob23/react-app:latest
-      - name: Delete Old Container
-        run: docker rm -f reactContainer
+        run: docker pull rubenjacob23/react-app:latest      
       - name: Run docker container
         run: docker run -d -p 3000:3000 --name reactContainer rubenjacob23/react-app 
       
