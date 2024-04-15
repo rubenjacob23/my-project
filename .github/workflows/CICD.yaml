@@ -44,13 +44,6 @@ jobs:
     steps:      
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
-       - name: Pull Docker image
-        uses: docker://docker.io/pull:latest
-        with:
-         image: rubenjacob23/react-app:latest       
-      - name: Delete Old Container
-        run: docker rm -f reactContainer
-      - name: Run docker container
-        run: docker run -d -p 3000:3000 --name reactContainer rubenjacob23/react-app
+      
 
 
