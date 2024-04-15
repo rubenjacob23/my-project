@@ -49,7 +49,7 @@ jobs:
       - name: Delete Old Container
         run: docker rm -f reactContainer
       - name: Run docker container
-        run: docker run -d -p 3000:80 --name reactContainer integrationninjas/reactjs-app 
+        run: docker run -d -p 3000:80 --name reactContainer rubenjacob23/reactjs-app 
       
 
 
