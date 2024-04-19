@@ -19,8 +19,8 @@ const LoginPage = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const storedUsername = localStorage.getItem('emailData');
-    const storedPassword = localStorage.getItem('passwordData');
+    // const storedUsername = localStorage.getItem('emailData');
+    // const storedPassword = localStorage.getItem('passwordData');
     if (username === 'abc@gmail.com' && passwordValue === 'admin') {
       localStorage.setItem('emailData', 'abc@gmail.com');
       localStorage.setItem('passwordData', 'admin');
