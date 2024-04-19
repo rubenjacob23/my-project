@@ -1,28 +1,47 @@
 import React, { useState } from 'react';
 import './App.css'; // Import your CSS file for styling
+import Home from "./Home.js";
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'username') {
       setUsername(value);
     } else if (name === 'password') {
-      setPassword(value);
+      setPasswordValue(value);
     }
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
+    const storedUsername = localStorage.getItem('emailData');
+    const storedPassword = localStorage.getItem('passwordData');
+    if (username === 'abc@gmail.com' && passwordValue === 'admin') {
+      localStorage.setItem('emailData', 'abc@gmail.com');
+      localStorage.setItem('passwordData', 'admin');
+      setIsLoggedIn(true);
+     
+    } else {
+      alert('Invalid username or password');
+    }
   };
 
+  if (isLoggedIn) {
+    // Redirect to home page
+    return <Home />;
+  }
+
   return (
-    <div className="login-container">
-      <h2>Cloud-Base Healthcare Data Management</h2>
+    <div>
+     { 
+    
+    <div className="login-container">      
+      <h2>Cloud-Based Healthcare Data Management</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -41,13 +60,15 @@ const LoginPage = () => {
             type="password"
             id="password"
             name="password"
-            value={password}
+            value={passwordValue}
             onChange={handleInputChange}
             required
           />
         </div>
         <button type="submit">Login</button>
       </form>
+    </div>
+      }
     </div>
   );
 };
