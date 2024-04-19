@@ -21,8 +21,8 @@ const LoginPage = () => {
     e.preventDefault();
     // const storedUsername = localStorage.getItem('emailData');
     // const storedPassword = localStorage.getItem('passwordData');
-    if (username === 'abc@gmail.com' && passwordValue === 'admin') {
-      localStorage.setItem('emailData', 'abc@gmail.com');
+    if (username === 'admin@abc.com' && passwordValue === 'admin') {
+      localStorage.setItem('emailData', 'admin@abc.com');
       localStorage.setItem('passwordData', 'admin');
       setIsLoggedIn(true);
      
@@ -41,7 +41,7 @@ const LoginPage = () => {
      { 
     
     <div className="login-container">      
-      <h2>Cloud Healthcare Data Management</h2>
+      <h2>Cloud Based Healthcare Data Management</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
