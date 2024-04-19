@@ -36,7 +36,7 @@ function Home() {
         event.preventDefault();
         const searchInput = event.target.searchInput.value.toLowerCase();
         const searchResult = searchPatient(searchInput);
-        console.log(searchResult); // You can do something with the search result here
+        setPatients(searchResult); // You can do something with the search result here
         event.target.reset();
     };
     return (
