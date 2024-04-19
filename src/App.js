@@ -22,7 +22,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-container">
-      <h2>Cloud-Based Healthcare Data Management</h2>
+      <h2>Cloud-Base Healthcare Data Management</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
